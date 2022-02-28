@@ -5,21 +5,20 @@ import java.util.regex.Pattern;
 public class JUnitTesting {
     public static void main (String args[]) {
         Scanner sc = new Scanner( System.in );
-        String password;
-        System.out.println( " enter password which contains minimum 8 characters & having exactly one special character: " );
-        password = sc.nextLine();
-        confirmpassword( password );
+        String emails;
+        System.out.println( " enter email which contains all email sample as per rules: " );
+        emails = sc.nextLine();
+        confirmpassword( emails );
     }
 
     public static boolean confirmpassword (String password) {
-        Pattern pattern = Pattern.compile( "^(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*#?&])[A-Za-z\\d[@$!%*#?&]]{8,}$" );
+        Pattern pattern = Pattern.compile( "^[a-z0-9]{3,}+([+.-_][a-z0-9]{3,}+)*@[a-z0-9]+.[a-z]{2,3}+(.[a-z]{2,3}){0,1}$" );
         Matcher matcher = pattern.matcher( password );
         if (matcher.matches()) {
-            System.out.println( " format of password is correct " + password );
+            System.out.println( " format of email is correct " + password );
         } else {
-            System.out.println( " format of password is incorrect." );
+            System.out.println( " format of email is incorrect." );
         }
-        return true;
+        return false;
     }
 }
-

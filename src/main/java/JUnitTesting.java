@@ -5,19 +5,20 @@ import java.util.regex.Pattern;
 public class JUnitTesting {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
-        String last_name;
-        System.out.println(" enter last name starts with capital letter & it should have min 3 characters: ");
-        last_name = sc.nextLine();
-        confirmLastName(last_name);
+        String emailId;
+        // Eg -> abc.xyz@bl.co.in
+        System.out.println(" enter email address with precise @ and . positions: ");
+        emailId = sc.nextLine();
+        confirmEmailAddress(emailId);
     }
 
-    public static boolean confirmLastName(String name) {
-        Pattern pattern = Pattern.compile("^[A-Z]{1}[a-z]{2,}$");
-        Matcher matcher = pattern.matcher(name);
+    public static boolean confirmEmailAddress(String emailId) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
+        Matcher matcher = pattern.matcher(emailId);
         if (matcher.matches()) {
-            System.out.println(" format of lastname is correct " + name);
+            System.out.println(" format of email address is correct " + emailId);
         } else {
-            System.out.println(" format of lastname is incorrect.");
+            System.out.println(" format of email address is incorrect.");
         }
         return false;
     }
